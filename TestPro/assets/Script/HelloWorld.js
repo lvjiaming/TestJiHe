@@ -13,6 +13,8 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         this.label.string = this.text;
+        // cc.AppLog._getStack();
+        customLog.info({a: 1, b: 2});
     },
 
     // called every frame

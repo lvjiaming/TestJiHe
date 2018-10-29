@@ -52,7 +52,7 @@ const AppLog = cc.Class({
         return "";
     },
     log(msg) {
-        const backLog = cc.log || console.log ||  window["log"];
+        const backLog = console.log ||cc.log ||  window["log"];
         // if(!AppLog.OPEN_LOG_FLAG){
         //     return;
         // }
@@ -63,7 +63,16 @@ const AppLog = cc.Class({
         // if(!AppLog.OPEN_LOG_FLAG){
         //     return;
         // }
-        backLog.call(this,"%c%s%s "+cc.js.formatStr.apply(cc,arguments),"color:#00CD00;",this._getData(), this._getStack(2));
+        let argArr = [];
+        for (let i in arguments) {
+            if (arguments[i] instanceof Object) {
+                argArr.push(arguments[i]);
+            }
+        }
+        if (argArr.length == 1) {
+            argArr = argArr[0];
+        }
+        backLog.call(this,"%c%s%s " + "\n","color:#00CD00;",this._getData(), this._getStack(2), argArr);
     },
 });
 window.customLog = AppLog.getInstance();

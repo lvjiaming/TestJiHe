@@ -14,13 +14,13 @@ cc.Class({
     onLoad: function () {
         this.label.string = this.text;
         // cc.AppLog._getStack();
-        customLog.info("哈哈哈",{a: 1, b: 2});
-        cc.comInterFace.getLocalPos((data) => {
-            cc.log("接口调用成功");
-            cc.log(data);
-        }, (err) => {
-            cc.error(err);
-        });
+        // customLog.info("哈哈哈",{a: 1, b: 2});
+        // cc.comInterFace.getLocalPos((data) => {
+        //     cc.log("接口调用成功");
+        //     cc.log(data);
+        // }, (err) => {
+        //     cc.error(err);
+        // });
     },
 
     // called every frame

@@ -2,6 +2,7 @@ package org.cocos2dx.javascript;
 
 
 
+import java.io.File;
 import java.io.IOException;
 
 import org.cocos2dx.lib.Cocos2dxJavascriptJavaBridge;
@@ -45,9 +46,14 @@ private static MediaPlayer mPlayer;
 					//Cocos2dxJavascriptJavaBridge.evalString("cc.vv.voiceMgr.onPlayEnd()");
 				}
 			});
-			mPlayer.setDataSource(VoiceRecorder.getStorageDir() + filePathString);
-			mPlayer.prepare();
-			mPlayer.start();
+			File dir = new File(VoiceRecorder.getStorageDir());
+			if (!dir.exists()) {
+				dir.mkdirs();
+			} else {
+				mPlayer.setDataSource(VoiceRecorder.getStorageDir() + filePathString);
+				mPlayer.prepare();
+				mPlayer.start();
+			}
 		} catch (IllegalArgumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

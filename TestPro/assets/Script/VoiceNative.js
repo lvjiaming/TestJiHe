@@ -190,6 +190,9 @@ var VoiceNative = cc.Class({
             // var fileData = decode(voiceData);
             var url = this._voiceMediaPath + filename;
             this.clearCache(filename);
+            if (!jsb.fileUtils.isDirectoryExist(this._voiceMediaPath)) {
+                jsb.fileUtils.createDirectory(this._voiceMediaPath)
+            }
             jsb.fileUtils.writeDataToFile(voiceData, url);
         }
     },

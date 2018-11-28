@@ -65,14 +65,22 @@ var FunctionUILayer = cc.Class({
                     cc.log("录音时间。。。。。  " + time);
                     // 读取录音文件
                     var msgStr = voiceNative.getVoiceData("record.amr");
-                    cc.log(" 发送的字符串录音文件。。。。。  " + msgStr);
+                    cc.log(" 发送的字符串录音文件1。。。。。  " + msgStr);
+                    const uintStr = cc.comInterFace.uint8ArrayToString(msgStr);
+                    cc.log(" 发送的字符串录音文件2。。。。。  " + uintStr);
+                    const base64data = cc.comInterFace.Base64.encode(uintStr);
+                    cc.log(" 发送的字符串录音文件3。。。。。  " + base64data);
+                    // const base64Str = cc.comInterFace.Base64.decode(base64data);
+                    // cc.log(" 发送的字符串录音文件4。。。。。  " + base64Str);
+                    // msgStr = cc.comInterFace.stringToUint8Array(base64Str);
+                    // cc.log(" 发送的字符串录音文件5。。。。。  " + msgStr);
                     // 等待发送
                     // var baseData = require("BaseScript")._utf8_encode(msgStr);
                     // cc.log(" base64 打包录音文件。。。。。  " + baseData);
                     // 直接发送二进制 
                     // require("VoiceMsgHandler").GetCS_VoiceChatReq(time, msgStr);
                     if (cc.sys.isNative) {
-                        self.PlayVoiceNotes(time, msgStr);
+                        self.PlayVoiceNotes(time, base64data);
                     }
                     // 本地测试测试
                     // setTimeout(function () {
@@ -111,13 +119,16 @@ var FunctionUILayer = cc.Class({
 
     // 播放语音通知 
     PlayVoiceNotes: function (time, data) {
+        cc.log("即将要播放的语音内容" + data);
         var msgfile = "cord.amr";
+        const baseStr = cc.comInterFace.Base64.decode(data);
+        const uintStr = cc.comInterFace.stringToUint8Array(baseStr);
         var self = this;
         // var baseData = require("BaseScript")._utf8_decode(data);
-        var dataView = new Uint8Array(data.buffer, data.offset);
+        var dataView = new Uint8Array(uintStr.buffer, uintStr.offset);
         // cc.log("dataView=" + dataView);
-        voiceNative.writeVoice(msgfile, dataView);
-        cc.log("即将要播放的语音内容" + dataView);
+        voiceNative.writeVoice(msgfile, uintStr);
+        cc.log("即将要播放的语音内容" + uintStr);
         setTimeout(function () {
             self.showSpeaker(msgfile);
             self._lastPlayTime = Date.now() + time;

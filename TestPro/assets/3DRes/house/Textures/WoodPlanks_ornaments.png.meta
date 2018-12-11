@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.0",
+  "uuid": "95f0a177-aa73-44bc-a010-d2f11067636e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "WoodPlanks_ornaments": {
+      "ver": "1.0.3",
+      "uuid": "4de65fea-8c4a-47ab-92cd-fe691bfcc7e2",
+      "rawTextureUuid": "95f0a177-aa73-44bc-a010-d2f11067636e",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1024,
+      "height": 512,
+      "rawWidth": 1024,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

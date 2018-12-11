@@ -1,0 +1,32 @@
+{
+  "ver": "2.3.0",
+  "uuid": "f980add1-5c27-4362-acc6-670f04f8ac92",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "platformSettings": {},
+  "subMetas": {
+    "WoodPlanks": {
+      "ver": "1.0.3",
+      "uuid": "81694819-ad3e-4869-bfb6-72559d7ccc14",
+      "rawTextureUuid": "f980add1-5c27-4362-acc6-670f04f8ac92",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1024,
+      "height": 512,
+      "rawWidth": 1024,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

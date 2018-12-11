@@ -1,0 +1,365 @@
+{
+  "ver": "1.0.4",
+  "uuid": "9a02a478-5b53-4aea-b551-ceec7f2cea8c",
+  "scaleFactor": 1,
+  "subMetas": {
+    "buffer.bin": {
+      "ver": "1.0.0",
+      "uuid": "541245aa-f0dc-4fa9-9200-c02a19dac28e",
+      "subMetas": {}
+    },
+    "WoodPlanks.mesh": {
+      "ver": "1.0.0",
+      "uuid": "480d93a8-4607-4ebd-b6f3-d5e375d586b8",
+      "modelUuid": "9a02a478-5b53-4aea-b551-ceec7f2cea8c",
+      "meshID": 0,
+      "verts": 1762,
+      "tris": 1960,
+      "submeshes": 2,
+      "minPos": {
+        "x": -5.010582447052,
+        "y": 2.38418579101563e-7,
+        "z": -4.85207891464233
+      },
+      "maxPos": {
+        "x": 5.010582447052,
+        "y": 6.86266231536865,
+        "z": 4.85207891464233
+      },
+      "subMetas": {}
+    },
+    "ruins_house2.prefab": {
+      "ver": "1.0.0",
+      "uuid": "cda00408-2e75-4ab1-9bf4-cdcb4c38a7fd",
+      "optimizationPolicy": "AUTO",
+      "asyncLoadAssets": false,
+      "readonly": true,
+      "content": [
+        {
+          "__type__": "cc.Prefab",
+          "_name": "ruins_house2",
+          "_objFlags": 0,
+          "_native": "",
+          "data": {
+            "__id__": 1
+          },
+          "optimizationPolicy": 0,
+          "asyncLoadAssets": false,
+          "readonly": true
+        },
+        {
+          "__type__": "cc.Node",
+          "_name": "RootNode",
+          "_objFlags": 0,
+          "_parent": null,
+          "_children": [
+            {
+              "__id__": 2
+            },
+            {
+              "__id__": 5
+            },
+            {
+              "__id__": 7
+            }
+          ],
+          "_active": true,
+          "_level": 0,
+          "_components": [],
+          "_prefab": {
+            "__id__": 9
+          },
+          "_opacity": 255,
+          "_color": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "_contentSize": {
+            "__type__": "cc.Size",
+            "width": 0,
+            "height": 0
+          },
+          "_anchorPoint": {
+            "__type__": "cc.Vec2",
+            "x": 0.5,
+            "y": 0.5
+          },
+          "_position": {
+            "__type__": "cc.Vec3",
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "_scale": {
+            "__type__": "cc.Vec3",
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "_quat": {
+            "__type__": "cc.Quat",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "_skewX": 0,
+          "_skewY": 0,
+          "_zIndex": 0,
+          "_is3DNode": true,
+          "groupIndex": 0,
+          "_id": ""
+        },
+        {
+          "__type__": "cc.Node",
+          "_name": "WoodPlanks",
+          "_objFlags": 0,
+          "_parent": {
+            "__id__": 1
+          },
+          "_children": [],
+          "_active": true,
+          "_level": 1,
+          "_components": [
+            {
+              "__id__": 3
+            }
+          ],
+          "_prefab": {
+            "__id__": 4
+          },
+          "_opacity": 255,
+          "_color": {
+            "__type__": "cc.Color",
+            "r": 204,
+            "g": 204,
+            "b": 204,
+            "a": 255
+          },
+          "_contentSize": {
+            "__type__": "cc.Size",
+            "width": 0,
+            "height": 0
+          },
+          "_anchorPoint": {
+            "__type__": "cc.Vec2",
+            "x": 0.5,
+            "y": 0.5
+          },
+          "_position": {
+            "__type__": "cc.Vec3",
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "_scale": {
+            "__type__": "cc.Vec3",
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "_quat": {
+            "__type__": "cc.Quat",
+            "x": 0,
+            "y": 0,
+            "z": 0,
+            "w": 1
+          },
+          "_skewX": 0,
+          "_skewY": 0,
+          "_zIndex": 0,
+          "_is3DNode": true,
+          "groupIndex": 0,
+          "_id": ""
+        },
+        {
+          "__type__": "cc.MeshRenderer",
+          "_name": "",
+          "_objFlags": 0,
+          "node": {
+            "__id__": 2
+          },
+          "_enabled": true,
+          "_srcBlendFactor": 770,
+          "_dstBlendFactor": 771,
+          "_mesh": {
+            "__uuid__": "480d93a8-4607-4ebd-b6f3-d5e375d586b8"
+          },
+          "textures": [
+            {
+              "__uuid__": "0275e94c-56a7-410f-bd1a-fc7483f7d14a"
+            },
+            {
+              "__uuid__": "0275e94c-56a7-410f-bd1a-fc7483f7d14a"
+            }
+          ],
+          "_id": ""
+        },
+        {
+          "__type__": "cc.PrefabInfo",
+          "root": {
+            "__id__": 1
+          },
+          "asset": {
+            "__id__": 0
+          },
+          "fileId": "WoodPlanks",
+          "sync": false
+        },
+        {
+          "__type__": "cc.Node",
+          "_name": "Camera",
+          "_objFlags": 0,
+          "_parent": {
+            "__id__": 1
+          },
+          "_children": [],
+          "_active": true,
+          "_level": 1,
+          "_components": [],
+          "_prefab": {
+            "__id__": 6
+          },
+          "_opacity": 255,
+          "_color": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "_contentSize": {
+            "__type__": "cc.Size",
+            "width": 0,
+            "height": 0
+          },
+          "_anchorPoint": {
+            "__type__": "cc.Vec2",
+            "x": 0.5,
+            "y": 0.5
+          },
+          "_position": {
+            "__type__": "cc.Vec3",
+            "x": 0,
+            "y": 0.75,
+            "z": 4
+          },
+          "_scale": {
+            "__type__": "cc.Vec3",
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "_quat": {
+            "__type__": "cc.Quat",
+            "x": -0.0308435652405024,
+            "y": 0.706433773040771,
+            "z": 0.0308435652405024,
+            "w": 0.706433773040771
+          },
+          "_skewX": 0,
+          "_skewY": 0,
+          "_zIndex": 0,
+          "_is3DNode": true,
+          "groupIndex": 0,
+          "_id": ""
+        },
+        {
+          "__type__": "cc.PrefabInfo",
+          "root": {
+            "__id__": 1
+          },
+          "asset": {
+            "__id__": 0
+          },
+          "fileId": "Camera",
+          "sync": false
+        },
+        {
+          "__type__": "cc.Node",
+          "_name": "Directional Light",
+          "_objFlags": 0,
+          "_parent": {
+            "__id__": 1
+          },
+          "_children": [],
+          "_active": true,
+          "_level": 1,
+          "_components": [],
+          "_prefab": {
+            "__id__": 8
+          },
+          "_opacity": 255,
+          "_color": {
+            "__type__": "cc.Color",
+            "r": 255,
+            "g": 255,
+            "b": 255,
+            "a": 255
+          },
+          "_contentSize": {
+            "__type__": "cc.Size",
+            "width": 0,
+            "height": 0
+          },
+          "_anchorPoint": {
+            "__type__": "cc.Vec2",
+            "x": 0.5,
+            "y": 0.5
+          },
+          "_position": {
+            "__type__": "cc.Vec3",
+            "x": -2,
+            "y": 2,
+            "z": 2
+          },
+          "_scale": {
+            "__type__": "cc.Vec3",
+            "x": 1,
+            "y": 1,
+            "z": 1
+          },
+          "_quat": {
+            "__type__": "cc.Quat",
+            "x": -0.239117622375488,
+            "y": -0.369643807411194,
+            "z": -0.0990457609295845,
+            "w": 0.892399072647095
+          },
+          "_skewX": 0,
+          "_skewY": 0,
+          "_zIndex": 0,
+          "_is3DNode": true,
+          "groupIndex": 0,
+          "_id": ""
+        },
+        {
+          "__type__": "cc.PrefabInfo",
+          "root": {
+            "__id__": 1
+          },
+          "asset": {
+            "__id__": 0
+          },
+          "fileId": "Directional Light",
+          "sync": false
+        },
+        {
+          "__type__": "cc.PrefabInfo",
+          "root": {
+            "__id__": 1
+          },
+          "asset": {
+            "__id__": 0
+          },
+          "fileId": "9a02a478-5b53-4aea-b551-ceec7f2cea8c",
+          "sync": false
+        }
+      ],
+      "subMetas": {}
+    }
+  }
+}

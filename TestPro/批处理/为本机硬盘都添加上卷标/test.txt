@@ -1,0 +1,12 @@
+@echo off
+@echo. 
+echo 说 明 
+echo 此命令将为本机硬盘都添加上卷标，一般是用在新机上面。 
+echo 以引导初学者更合理地支配他们的硬盘空间。事情微小，但 
+echo 能体现装机者专业细致的办事态度。 
+pause 
+c: 
+label c:OS
+label d:本地磁盘
+label e:本地磁盘
+label f:本地磁盘

@@ -1,0 +1,3 @@
+@echo off
+c:\windows\system32\systeminfo.exe
+pause 

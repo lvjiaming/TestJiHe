@@ -1,0 +1,27 @@
+@echo off
+setlocal enabledelayedexpansion 
+echo 本机开放的端口及使用该端口的进程
+echo 端口号 进程名称 
+echo TCP协议: 
+for /F "usebackq skip=4 tokens=2,5" %%i in (`"netstat -ano -p TCP"`) do ( 
+call :Assoc %%i TCP %%j 
+echo !TCP_Port! !TCP_Proc_Name! 
+) 
+
+
+ECHO UDP协议: 
+for /F "usebackq skip=4 tokens=2,4" %%i in (`"netstat -ano -p UDP"`) do ( 
+call :Assoc %%i UDP %%j 
+echo !UDP_Port! !UDP_Proc_Name! 
+) 
+pause
+:Assoc
+for /F "tokens=2 delims=:" %%e in ("%1") do ( 
+set %2_Port=%%e 
+) 
+for /F "skip=2 usebackq delims=, tokens=1" %%a in (`"Tasklist /FI "PID eq %3" /FO CSV"`) do 
+
+
+( 
+set %2_Proc_Name=%%~a 
+)

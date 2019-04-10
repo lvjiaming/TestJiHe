@@ -76,4 +76,9 @@ cc.Class({
     update: function (dt) {
 
     },
+
+    onTest() {
+        cc.log("测试");
+    }
+
 });

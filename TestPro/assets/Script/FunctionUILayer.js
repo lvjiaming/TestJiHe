@@ -21,6 +21,58 @@ var FunctionUILayer = cc.Class({
 
     // use this for initialization
     onLoad: function () {
+
+        if (cc.sys.isBrowser) {
+            cc.log("初始化语音");
+            if (!navigator.getUserMedia)
+                navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+            var self = this;
+            cc.log(navigator.getUserMedia);
+            if (!navigator.getUserMedia) {
+                cc.log("navigator.getUserMedia 方法未找到");
+                return ;
+            }
+            navigator.getUserMedia(
+                {
+                    "audio": true,
+                    //     {
+                    //     "mandatory": {
+                    //         "googEchoCancellation": "false",
+                    //         "googAutoGainControl": "false",
+                    //         "googNoiseSuppression": "false",
+                    //         "googHighpassFilter": "false"
+                    //     },
+                    //     "optional": []
+                    // },
+                }, function (stream) {
+                    // Create analyser node
+                    cc.log("初始化成功");
+                    // var audioContext = self._audioContext;
+                    // var inputPoint = audioContext.createGain();
+                    //
+                    // var audioInput = audioContext.createMediaStreamSource(stream);
+                    // audioInput.connect(inputPoint);
+                    //
+                    // var analyserNode = audioContext.createAnalyser();
+                    // analyserNode.fftSize = 2048;
+                    // inputPoint.connect(analyserNode);
+                    //
+                    // var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
+                    // analyserNode.getByteFrequencyData(freqByteData);
+                    //
+                    // self._freqByteData = freqByteData;
+                    // self._analyserNode = analyserNode;
+                    // self._audioInput = audioInput;
+                    //
+                    // self._inited = true;
+                }, function (e) {
+                    alert('Error getting audio');
+                    console.log(e);
+                    // self._inited = false;
+                });
+            return;
+        }
+
         voiceNative.init();
         FunctionUILayer._instance = this;
         this.SoundBtnNode.active = true;

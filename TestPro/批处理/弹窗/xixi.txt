@@ -1,0 +1,29 @@
+msgbox "虽然你说你脾气不好",vbQuestion,"在吗？小肥猪"
+
+msgbox ("邋遢")
+
+msgbox ("不会收拾")
+
+msgbox ("不会做饭")
+msgbox ("但是我会迁就你")
+msgbox ("宠你")
+msgbox ("因为")
+msgbox ("我")
+msgbox ("喜")
+msgbox ("欢")
+msgbox ("你")
+msgbox ("呀")
+dim j
+
+do while j<1
+Select Case msgbox("你要不要也喜欢我呀？",68,"嘻嘻")
+
+Case 6 j=1
+
+Case 7 msgbox("这个选项可不能点，嘻嘻")
+
+end Select
+
+loop
+
+msgbox("决定了就不能变哦！嘻嘻")

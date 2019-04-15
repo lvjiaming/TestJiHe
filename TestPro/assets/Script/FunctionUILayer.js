@@ -35,39 +35,11 @@ var FunctionUILayer = cc.Class({
             navigator.getUserMedia(
                 {
                     "audio": true,
-                    //     {
-                    //     "mandatory": {
-                    //         "googEchoCancellation": "false",
-                    //         "googAutoGainControl": "false",
-                    //         "googNoiseSuppression": "false",
-                    //         "googHighpassFilter": "false"
-                    //     },
-                    //     "optional": []
-                    // },
                 }, function (stream) {
                     // Create analyser node
                     cc.log("初始化成功");
-                    // var audioContext = self._audioContext;
-                    // var inputPoint = audioContext.createGain();
-                    //
-                    // var audioInput = audioContext.createMediaStreamSource(stream);
-                    // audioInput.connect(inputPoint);
-                    //
-                    // var analyserNode = audioContext.createAnalyser();
-                    // analyserNode.fftSize = 2048;
-                    // inputPoint.connect(analyserNode);
-                    //
-                    // var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
-                    // analyserNode.getByteFrequencyData(freqByteData);
-                    //
-                    // self._freqByteData = freqByteData;
-                    // self._analyserNode = analyserNode;
-                    // self._audioInput = audioInput;
-                    //
-                    // self._inited = true;
                 }, function (e) {
-                    alert('Error getting audio');
-                    console.log(e);
+                    console.error(e);
                     // self._inited = false;
                 });
             return;

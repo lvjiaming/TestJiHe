@@ -1,9 +1,9 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 const H5Record = cc.Class({
     statics: {
-        getInstance(mediaStream) {
+        getInstance() {
             if (!this.record) {
-                this.record = new H5Record(mediaStream);
+                this.record = new H5Record();
             }
             return this.record;
         },
@@ -21,15 +21,23 @@ const H5Record = cc.Class({
     _curMediaNode: null, // 当前的mediaNode
 
     _curJsNode: null, // 当前的jsNode
-    ctor(mediaStream) {
+
+    _recordKey: null, // 录音开关
+
+    _node: null, // 播放节点
+    ctor() {
         this._hasReady = false;
-        this._audioContext = new AudioContext();
-        if (mediaStream) {
-            this._mediaStream = mediaStream;
-            this.setHasReady(true);
-        }
         this._leftDataList = [];
         this._rightDataList = [];
+        this._recordKey = false;
+        this._node= null;
+    },
+
+    /**
+     *  设置节点
+     */
+    setNode(node) {
+        this._node = node;
     },
 
     /**
@@ -61,6 +69,10 @@ const H5Record = cc.Class({
                 audioNode.buffer = audioBuffer;
                 audioNode.connect(audioContext.destination);  // 连接扬声器
                 audioNode.start(0); // 从第0秒开始播放
+                setTimeout(() => {
+                    audioContext.close();
+                    console.log("关闭audioContext");
+                }, (audioBuffer.duration + 0.5) * 1000);
             });
         } else {
             console.log("arrayBuff is null");
@@ -68,15 +80,35 @@ const H5Record = cc.Class({
     },
 
     /**
+     *  通过VideoPlay播放
+     */
+    playByVideoPlay(arrayBuff) {
+        if (this._node) {
+            const videoPlay = this._node.getComponent(cc.VideoPlayer);
+            if (videoPlay) {
+                const blob = new Blob([new Uint8Array(arrayBuff)]);
+                console.log("blob: ", blob);
+                const url = URL.createObjectURL(blob);
+                console.log("url: ", url);
+                videoPlay.remoteURL = url;
+                videoPlay.play();
+            }
+        }
+    },
+
+    /**
      *  开始录音
      */
-    startRecord() {
+    startRecord(mediaStream) {
         if (this._hasReady) {
             console.log("开始录音");
+            this._recordKey = true;
             this._leftDataList = [];
             this._rightDataList = [];
             const audioContext = new AudioContext();
-            const mediaNode = audioContext.createMediaStreamSource(this._mediaStream);
+            // audioContext.close();
+            this._audioContext = audioContext;
+            const mediaNode = audioContext.createMediaStreamSource(mediaStream);
             this._curMediaNode = mediaNode;
             const jsNode = this.creatJsNode(audioContext);
             this._curJsNode = jsNode;
@@ -121,19 +153,32 @@ const H5Record = cc.Class({
      */
     stopRecord() {
         console.log("结束录音");
-        // this._mediaStream.getAudioTracks()[0].stop();
-        this._curMediaNode.disconnect();
-        this._curJsNode.disconnect();
-        // console.log("获取的声音数据为：", this._leftDataList, this._rightDataList);
-        const lefe = this.mergeArray(this._leftDataList);
-        const right = this.mergeArray(this._rightDataList);
-        // console.log("合并后的声道数据：", lefe, right);
-        const audioData = this.mergeLeftAndRight(lefe, right);
-        // console.log("声音数据为：", audioData);
-        const wavFileData = this.createWavFile(audioData);
-        console.log("wav声音数据：", wavFileData);
-        console.log("base64: ", this.arrayBufferToBase64(wavFileData));
-        this.playByAudioContext(wavFileData);
+        if (this._recordKey) {
+            this._recordKey = false;
+            // this._mediaStream.getAudioTracks()[0].stop();
+            this._curMediaNode.disconnect();
+            this._curJsNode.disconnect();
+            if (this._audioContext) {
+                this._audioContext.close();
+            }
+            // console.log("获取的声音数据为：", this._leftDataList, this._rightDataList);
+            if (this._leftDataList && this._rightDataList && this._leftDataList.length > 0 && this._rightDataList.length > 0) {
+                const lefe = this.mergeArray(this._leftDataList);
+                const right = this.mergeArray(this._rightDataList);
+                // console.log("合并后的声道数据：", lefe, right);
+                const audioData = this.mergeLeftAndRight(lefe, right);
+                // console.log("声音数据为：", audioData);
+                const wavFileData = this.createWavFile(audioData);
+                console.log("wav声音数据：", wavFileData);
+                // console.log("base64: ", this.arrayBufferToBase64(wavFileData));
+                this.playByAudioContext(wavFileData);
+                // this.playByVideoPlay(wavFileData);
+            } else {
+                console.log("录入时间太短，未收集到音频数据");
+            }
+        } else {
+            console.log("录音开关未开");
+        }
     },
 
     /**
@@ -249,6 +294,23 @@ const H5Record = cc.Class({
             binary += String.fromCharCode(bytes[i]);
         }
         return window.btoa(binary);
+    },
+    /**
+     *  取消录音
+     */
+    cancelRecord() {
+        if (this._curMediaNode) {
+            this._curMediaNode.disconnect();
+            this._curMediaNode = null;
+        }
+        if (this._curJsNode) {
+            this._curJsNode.disconnect();
+            this._curJsNode = null;
+        }
+        if (this._audioContext) {
+            this._audioContext.close();
+        }
+        this._recordKey = false;
     },
 
 });

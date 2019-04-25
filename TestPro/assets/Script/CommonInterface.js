@@ -30,6 +30,10 @@ CommonInterface.webCopyStr = (str) => {
     }
     document.body.removeChild(textArea);
 };
+/**
+ *  高德地图的接入
+ * @constructor
+ */
 CommonInterface.Amap = () => {
     if (AMap) {
         let map, geolocation;
@@ -82,6 +86,11 @@ CommonInterface.Amap = () => {
         }
     }
 };
+/**
+ *  uint8Array转字符串
+ * @param fileData
+ * @returns {string}
+ */
 CommonInterface.uint8ArrayToString = (fileData) => {
     let dataString = "";
     for (let i = 0; i < fileData.length; i++) {
@@ -90,6 +99,11 @@ CommonInterface.uint8ArrayToString = (fileData) => {
 
     return dataString
 };
+/**
+ *  字符串转uint8Array
+ * @param str
+ * @returns {Uint8Array}
+ */
 CommonInterface.stringToUint8Array = (str) => {
     let arr = [];
     for (let i = 0, j = str.length; i < j; ++i) {
@@ -99,6 +113,10 @@ CommonInterface.stringToUint8Array = (str) => {
     let tmpUint8Array = new Uint8Array(arr);
     return tmpUint8Array
 };
+/**
+ *  base64的编码与解码
+ * @type {{_keyStr: string, encode: CommonInterface.Base64.encode, decode: CommonInterface.Base64.decode, _utf8_encode: CommonInterface.Base64._utf8_encode, _utf8_decode: CommonInterface.Base64._utf8_decode}}
+ */
 CommonInterface.Base64 = {
 
     // private property
@@ -229,7 +247,26 @@ CommonInterface.Base64 = {
         return string;
     }
 
-}
+};
+/**
+ *  原生平台截屏
+ */
+CommonInterface.nativeCaptureScreen = function () {
+    var size = cc.director.getWinSize();
+    var fileName = "result_share.jpg";
+    var fullPath = jsb.fileUtils.getWritablePath() + fileName;
+    if (jsb.fileUtils.isFileExist(fullPath)) {
+        jsb.fileUtils.removeFile(fullPath);
+    }
+    var width = Math.floor(size.width);
+    var height = Math.floor(size.height);
+    var texture = new cc.RenderTexture(width, height, cc.Texture2D.PIXEL_FORMAT_RGBA8888, gl.DEPTH24_STENCIL8_OES);
+    texture.setPosition(cc.p(size.width / 2, size.height / 2));
+    texture.begin();
+    cc.director.getRunningScene().visit();
+    texture.end();
+    texture.saveToFile(fileName, cc.IMAGE_FORMAT_JPG);
+};
 
 module.exports = CommonInterface;
 cc.comInterFace = CommonInterface;

@@ -20,7 +20,7 @@ cc.Class({
 
     onLoad () {
         if (this.banben) {
-            this.banben.string = `版本：11.6`;
+            this.banben.string = `版本：12.0`;
         }
         H5Record.getInstance().setNode(this.videoPlay);
         // const self = this;
@@ -34,6 +34,7 @@ cc.Class({
                     console.log("navigator.mediaDevices.getUserMedia is null");
                     navigator.mediaDevices.getUserMedia = function (cont) {
                         const getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+                        console.log("getUserMedia: ", getUserMedia);
                         if (!getUserMedia) {
                             return Promise.reject(new Error("not support"));
                         }
@@ -55,6 +56,8 @@ cc.Class({
                     // self._mediaStream = mediaStream;
                 }).catch(function (e) {
                     console.error("初始化失败", e);
+                    console.error("msssage: ", e.message);
+                    alert("获取权限失败：", e.name);
                 });
             } catch (e) {
                 console.error("不支持")
@@ -84,7 +87,8 @@ cc.Class({
                 console.log("获取mediaStream, 开始录音");
                 H5Record.getInstance().startRecord(mediaStream);
             }).catch(function (e) {
-                console.error("初始化失败", e);
+                console.error("初始化失败", e.name);
+                alert("获取权限失败：", e.name);
             });
         }
     },

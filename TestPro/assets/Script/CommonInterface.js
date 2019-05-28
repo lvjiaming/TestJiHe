@@ -268,5 +268,14 @@ CommonInterface.nativeCaptureScreen = function () {
     texture.saveToFile(fileName, cc.IMAGE_FORMAT_JPG);
 };
 
+/**
+ *  原生平台复制
+ */
+CommonInterface.nativeCopy = (str) => {
+    if (cc.sys.isNative) {
+        jsb.copyTextToClipboard(str);
+    }
+};
+
 module.exports = CommonInterface;
 cc.comInterFace = CommonInterface;

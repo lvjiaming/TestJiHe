@@ -1,0 +1,19 @@
+{
+  "name": "test-plug",
+  "version": "0.0.1",
+  "description": "一个测试插件",
+  "author": "lvjiaming",
+  "main": "main.js",
+  "main-menu": {
+    "我的插件/TestPlug": {
+      "message": "test-plug:open"
+    }
+  },
+  "panel": {
+    "main": "panel/index.js",
+    "type": "dockable",
+    "title": "测试界面",
+    "width": "500",
+    "height": "700"
+  }
+}
